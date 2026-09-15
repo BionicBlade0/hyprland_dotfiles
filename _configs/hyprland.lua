@@ -32,7 +32,7 @@ hl.monitor({
 --     output = "DP-1",
 --     mode = "3840x2160@60",
 --     position = "auto",
---     scale = 2
+--     scale = 1
 -- })
 
 ---------------------
@@ -62,7 +62,8 @@ local menu = "hyprlauncher"
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
-    hl.exec_cmd("quickshell & hyprpaper")
+    hl.exec_cmd(
+        "cd /mnt/hiroshi/Development/meanas_bar && quickshell --config /mnt/hiroshi/Development/meanas_bar & hyprpaper")
 end)
 
 
@@ -513,7 +514,9 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd([[hyprctl eval "hl.monitor({output='e
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("gnome-system-monitor"))
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("flatpak run app.zen_browser.zen"))
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("killall quickshell && quickshell"))
+hl.bind(mainMod .. " + W",
+    hl.dsp.exec_cmd(
+        "killall quickshell && cd /mnt/hiroshi/Development/meanas_bar && quickshell --config /mnt/hiroshi/Development/meanas_bar"))
 hl.bind(mainMod .. " + TAB", hl.dsp.layout("swapwithmaster"))
 hl.bind(mainMod .. " + SHIFT + TAB", hl.dsp.layout("mfact -0.1"))
 hl.bind(mainMod .. " + CTRL + TAB", hl.dsp.layout("mfact +0.1"))
